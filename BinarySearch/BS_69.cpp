@@ -4,7 +4,6 @@
 // 题解链接：https://www.wolai.com/4d217ahiXiWYHtpT8yCXAV#rSVuGVLuCjFurMSqWdS6Mk
 
 #include <iostream>
-#include <vector>
 #include <cmath>
 
 using namespace std;
