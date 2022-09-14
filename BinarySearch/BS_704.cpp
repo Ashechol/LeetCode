@@ -1,6 +1,6 @@
 // 704. 二分查找
 // 题目链接：https://leetcode.cn/problems/binary-search/
-// 题解：https://www.wolai.com/4d217ahiXiWYHtpT8yCXAV
+// 题解：https://www.wolai.com/4d217ahiXiWYHtpT8yCXAV#vnYLWLKt93WGUF5Jnr3Y4A
 
 #include<iostream>
 #include<vector>
