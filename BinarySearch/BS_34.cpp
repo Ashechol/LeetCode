@@ -1,3 +1,8 @@
+// Created by Ashechol on 2022/9/14.
+// 34. 在排序数组中查找元素的第一个和最后一个位置
+// 题目链接：https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/
+// 题解：https://www.wolai.com/4d217ahiXiWYHtpT8yCXAV#2RbQifbiAQFNsqRRoSW5gP
+
 #include <iostream>
 #include <vector>
 
