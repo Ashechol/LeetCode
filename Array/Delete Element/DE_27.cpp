@@ -24,7 +24,7 @@ int main()
     // 快慢指针法
     int length = removeElement(nums, val);
 
-    for (int i{0}; i < length; i++)
+    for (int i = 0; i < length; i++)
         cout << nums[i] << " ";
 
     // 使用标准库的函数来删除
@@ -38,7 +38,7 @@ int main()
 // 快慢指针（双指针）
 int removeElement(vector<int>& nums, int val)
 {
-    int slowIndex{0};
+    int slowIndex = 0;
 
     // 快指针遍历全部数组
     for (int fastIndex = 0; fastIndex < nums.size(); fastIndex++)
