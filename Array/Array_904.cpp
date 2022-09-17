@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include <vector>
+#include <unordered_map>
 
 using namespace std;
 
@@ -48,6 +49,31 @@ int totalFruit(vector<int>& fruits)
         }
 
         if (maxTotal < r - l + 1) maxTotal = r - l + 1;
+    }
+
+    return maxTotal;
+}
+
+int totalFruit_Hashmap(vector<int>& fruits)
+{
+    int maxTotal = 0;
+    unordered_map<int, int> fruitTypeNum;
+
+    for (int l = 0, r = 0; r < fruits.size(); r++)
+    {
+        fruitTypeNum[fruits[r]]++;
+
+        while (fruitTypeNum.size() > 2)
+        {
+            fruitTypeNum[fruits[l]]--;
+
+            if (fruitTypeNum[fruits[l]] == 0)
+                fruitTypeNum.erase(fruits[l]);
+
+            l++;
+        }
+
+        maxTotal = max(maxTotal, r - l + 1);
     }
 
     return maxTotal;
