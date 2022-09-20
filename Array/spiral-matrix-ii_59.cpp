@@ -30,49 +30,34 @@ int main()
 
 vector<vector<int>> generateMatrix(int n)
 {
-    vector<vector<int>> matrix(n);
+    vector<vector<int>> matrix(n, vector<int>(n,0));
     int value = 1;
+    // 左右边界
     int l = 0, r = n - 1;
+    // 上下边界
     int t = 0, d = n - 1;
     int i = 0, j = 0;
 
-    for (vector<int>& row: matrix)
-        row.resize(n);
-
-    while (value <= n * n)
+    while (value < n * n)
     {
-        if (i == t && j == l)
-        {
-            for (; j <= r; j++)
-                matrix[i][j] = value++;
-            j--;
-            i++;
-            t++;
-        }
-        else if (i == t && j == r)
-        {
-            for (; i <= d; i++)
-                matrix[i][j] = value++;
-            i--;
-            j--;
-            r--;
-        }
-        else if (i == d && j == r)
-        {
-            for (; j >= l; j--)
-                matrix[i][j] = value++;
-            j++;
-            i--;
-            d--;
-        }
-        else if (i == d && j == l)
-        {
-            for (; i >= t; i--)
-                matrix[i][j] = value++;
-            i++;
-            j++;
-            l++;
-        }
+        for (; j < r; j++)
+            matrix[i][j] = value++;
+        t++;
+
+        for (; i < d; i++)
+            matrix[i][j] = value++;
+        r--;
+
+        for (; j > l; j--)
+            matrix[i][j] = value++;
+        d--;
+
+        for (; i > t; i--)
+            matrix[i][j] = value++;
+        l++;
     }
+    cout << matrix[i][j] << endl;
+    matrix[i][j] = value;
+
     return matrix;
 }
