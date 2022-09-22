@@ -3,4 +3,4 @@ project(LeetCode)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(reverse-linked-list_206 reverse-linked-list_206.cpp)
+add_executable(swap-nodes-in-pairs_24 swap-nodes-in-pairs_24.cpp)

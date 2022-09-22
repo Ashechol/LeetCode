@@ -11,7 +11,7 @@ struct ListNode
     int val{};
     ListNode* next;
     explicit ListNode(int x = 0) : val(x), next(nullptr) {}
-    explicit ListNode(ListNode* next) : next(next) {}
+    explicit ListNode(ListNode* next) : val(0), next(next) {}
     ListNode(int x, ListNode* next) : val(x), next(next) {}
 };
 
