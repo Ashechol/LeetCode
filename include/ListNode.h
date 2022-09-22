@@ -33,7 +33,7 @@ ListNode* cinListNode(int n)
     return head;
 }
 
-inline void printListNode(ListNode* p)
+inline void coutListNode(ListNode* p)
 {
     for (; p != nullptr; p = p->next)
     {
