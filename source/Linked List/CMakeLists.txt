@@ -3,4 +3,4 @@ project(LeetCode)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(remove-nth-node-from-end-of-list_19 remove-nth-node-from-end-of-list_19.cpp)
+add_executable(intersection-of-two-linked-lists_160 intersection-of-two-linked-lists_160.cpp)
