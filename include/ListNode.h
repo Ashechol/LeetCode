@@ -15,23 +15,9 @@ struct ListNode
     ListNode(int x, ListNode* next) : val(x), next(next) {}
 };
 
-ListNode* cinListNode(int n)
-{
-    auto* head = new ListNode();
-    ListNode* p = head;
+ListNode* cinListNode(int n);
 
-    cin >> head->val;
-
-    for (int i = 1; i < n; i++)
-    {
-        int num;
-        cin >> num;
-        p->next = new ListNode(num);
-        p = p->next;
-    }
-
-    return head;
-}
+ListNode* cinListNodeCircle(int n, int pos);
 
 inline void coutListNode(ListNode* p)
 {
