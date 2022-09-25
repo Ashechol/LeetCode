@@ -6,6 +6,7 @@
 #include <iostream>
 #include <ListNode.h>
 #include <stack>
+#include <unordered_map>
 
 using namespace std;
 
@@ -114,5 +115,20 @@ ListNode* getIntersectionNode_stack(ListNode *headA, ListNode *headB)
 
 ListNode* getIntersectionNode_hash(ListNode *headA, ListNode *headB)
 {
+    unordered_map<ListNode*, int> mapA;
 
+    while (headA)
+    {
+        mapA[headA] = 1;
+        headA = headA->next;
+    }
+
+    while (headB)
+    {
+        if (mapA.find(headB) != mapA.end()) return headB;
+
+        headB = headB->next;
+    }
+
+    return nullptr;
 }
