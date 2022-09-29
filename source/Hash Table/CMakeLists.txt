@@ -2,4 +2,4 @@ project(LeetCode)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(happy-number_202 happy-number_202.cpp)
+add_executable(two-sum_1 two-sum_1.cpp)
