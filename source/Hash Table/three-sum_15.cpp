@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include <vector>
-#include <unordered_map>
+#include <unordered_set>
 #include <algorithm>
 
 using namespace std;
@@ -60,6 +60,40 @@ vector<vector<int>> threeSum(vector<int>& nums)
 
                 l++; r--;
             }
+        }
+    }
+
+    return res;
+}
+
+vector<vector<int>> threeSum_hash(vector<int>& nums)
+{
+    vector<vector<int>> res;
+
+    sort(nums.begin(), nums.end());
+
+    for (int i = 0; i < nums.size(); i++)
+    {
+        if (nums[i] > 0) return res;
+
+        if (i > 0 && nums[i] == nums[i - 1]) continue;
+
+        unordered_set<int> numSet;
+        for (int j = i + 1; j < nums.size(); j++)
+        {
+            // 这里判断j的前两个数是为了防止跳过如 [-4,2,2] 这样的元组
+            if (j > i + 2 && nums[j] == nums[j - 1] && nums[j] == nums[j - 2])
+                continue;
+
+            int tmp = 0 - nums[i] - nums[j];
+
+            if (numSet.find(tmp) != numSet.end())
+            {
+                res.push_back({nums[i], nums[j], tmp});
+                numSet.erase(tmp);
+            }
+            else
+                numSet.insert(nums[j]);
         }
     }
 
