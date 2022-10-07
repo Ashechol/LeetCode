@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD 11)
 include_directories(include)
 
 # add_subdirectory("source/Linked List")
-add_subdirectory("source/Hash Table")
+# add_subdirectory("source/Hash Table")
+add_subdirectory("source/String")
 
 add_executable(test test.cpp)
