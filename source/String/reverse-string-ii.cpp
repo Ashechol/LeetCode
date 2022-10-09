@@ -3,6 +3,7 @@
 // 题解链接：https://www.wolai.com/qKed6CrmVJa1SBc8CEiC2H#cnk7SuPiTa1aiy5qUD3bCw
 
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
@@ -39,6 +40,19 @@ string reverseStr(string s, int k)
     r = cnt > k ? len - (cnt - k) - 1: len - 1;
 
     while (l < r) swap(s[l++], s[r--]);
+
+    return s;
+}
+
+string reverseStr_compact(string s, int k)
+{
+    for (int i = 0; i < s.length(); i += 2 * k)
+    {
+        if (i + k > s.length())
+            reverse(s.begin() + i, s.end());
+        else
+            reverse(s.begin() + i, s.begin() + i + k);
+    }
 
     return s;
 }
