@@ -33,7 +33,7 @@ string replaceSpace(string s)
     // previous指向新字符串的尾部
     int pre = s.size() - 1;
 
-    for (; prev < cur; cur--, pre--)
+    for (; pre < cur; cur--, pre--)
     {
         if (s[cur] != ' ')
             s[pre] = s[cur];
