@@ -2,4 +2,4 @@ project(LeetCode)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(reverse-words-in-a-string_151 reverse-words-in-a-string_151.cpp)
+add_executable(reverse-left-words_offer58 reverse-left-words_offer58.cpp)
