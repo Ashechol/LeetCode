@@ -39,16 +39,16 @@ int* getNext(const string& str)
 {
     int* next = new int[str.length()];
 
-    int j = -1;
-    next[0] = j;
+    int pre = -1;
+    next[0] = pre;
 
-    for (int i = 1; i < str.length(); i++)
+    for (int suf = 1; suf < str.length(); suf++)
     {
-        while (j >= 0 && str[i] != str[j + 1]) j = next[j];
+        while (pre >= 0 && str[suf] != str[pre + 1]) pre = next[pre];
 
-        if (str[i] == str[j + 1]) j++;
+        if (str[suf] == str[pre + 1]) pre++;
 
-        next[i] = j;
+        next[suf] = pre;
     }
 
     return next;
