@@ -32,7 +32,7 @@ int strStr(string haystack, string needle)
             return i;
     }
 
-    return -1;
+    return 1;
 }
 
 int* getNext(const string& str)

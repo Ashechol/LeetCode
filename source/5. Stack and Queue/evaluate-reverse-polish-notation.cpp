@@ -26,25 +26,6 @@ int main()
     return 0;
 }
 
-int toNum(string s)
-{
-    int res = 0;
-    int bit = 1;
-
-    for (int i = s.length() - 1; i >= 0; i--)
-    {
-        if (s[i] != '-')
-        {
-            res += (s[i] - '0') * bit;
-            bit *= 10;
-        }
-        else
-            res *= -1;
-    }
-
-    return res;
-}
-
 int evalRPN(vector<string>& tokens)
 {
     stack<int> stk;
