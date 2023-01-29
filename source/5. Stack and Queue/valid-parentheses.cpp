@@ -7,72 +7,44 @@
 
 using namespace std;
 
-bool isValid(string s);
-bool isValid_compact(string s);
+bool IsValid(string s);
 
 int main()
 {
     string s;
     cin >> s;
 
-    cout << isValid_compact(s) << endl;
+    cout << IsValid(s) << endl;
 
     return 0;
 }
 
-bool isValid(string s)
+char GetRbrace(char lbrace)
 {
-    if (s.length() % 2 != 0) return false;
-
-    stack<char> s1, s2;
-
-    for (char c: s) s1.push(c);
-
-    while (!s1.empty())
-    {
-        if (s2.empty())
-        {
-            s2.push(s1.top());
-            s1.pop();
-        }
-
-        if ((s1.top() == '(' && s2.top() == ')')
-            ||(s1.top() == '{' && s2.top() == '}')
-            ||(s1.top() == '[' && s2.top() == ']'))
-            s2.pop();
-        else
-            s2.push(s1.top());
-
-        s1.pop();
-    }
-
-    return s2.empty();
-}
-
-char rbrace(char c)
-{
-    if (c == '(')
+    if (lbrace == '(')
         return ')';
 
-    if (c == '{')
-        return '}';
-
-    if (c == '[')
+    if (lbrace == '[')
         return ']';
 
-    return '\0';
+    if (lbrace == '{')
+        return '}';
+
+    return ' ';
 }
 
-bool isValid_compact(string s)
+bool IsValid(string s)
 {
+    if (s.size() % 2 != 0) return false;
+
     stack<char> stk;
 
-    for (char c : s)
+    for (char c: s)
     {
-        if (!stk.empty() && c == stk.top())
+        if (!stk.empty() && c == GetRbrace(stk.top()))
             stk.pop();
         else
-            stk.push(rbrace(c));
+            stk.push(c);
     }
 
     return stk.empty();
