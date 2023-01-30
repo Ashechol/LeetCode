@@ -1,6 +1,5 @@
 // Created by Ashechol on 2023/1/29.
 // 239. 滑动窗口最大值
-// 题解链接：
 
 #include <iostream>
 #include <vector>
