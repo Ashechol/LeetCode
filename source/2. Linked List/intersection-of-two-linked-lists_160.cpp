@@ -4,7 +4,7 @@
 // 题解链接：https://www.wolai.com/hMAJ8e8d29PkLcFiNEbUT4#sKpFo8FnhSFptA8twQa1Tc
 
 #include <iostream>
-#include <ListNode.h>
+#include <LeetCode.h>
 #include <stack>
 #include <unordered_map>
 

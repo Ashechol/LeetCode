@@ -1,9 +1,8 @@
-//
 // Created by Ashechol on 2022/9/21.
 //
 
 #include "LinkedList.h"
-#include "ListNode.h"
+#include "LeetCode.h"
 
 LinkedList::LinkedList()
 {

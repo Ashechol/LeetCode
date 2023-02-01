@@ -18,7 +18,7 @@ public:
 
     LinkedList();
 
-    [[nodiscard]] int get(int index) const;
+    int get(int index) const;
 
     void addAtHead(int val);
 

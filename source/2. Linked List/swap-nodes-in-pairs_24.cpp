@@ -4,7 +4,7 @@
 // 题解链接：https://www.wolai.com/hMAJ8e8d29PkLcFiNEbUT4#pReQJmhubHutAKt1HaHenx
 
 #include <iostream>
-#include <ListNode.h>
+#include "LeetCode.h"
 
 using namespace std;
 
