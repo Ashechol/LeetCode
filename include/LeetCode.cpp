@@ -4,6 +4,8 @@
 #include "LeetCode.h"
 #include <queue>
 
+using namespace std;
+
 ListNode* ListNode::cinListNode(int n)
 {
     auto* head = new ListNode();

@@ -8,8 +8,6 @@
 #include <vector>
 #include <string>
 
-using namespace std;
-
 class ListNode
 {
 public:
@@ -31,9 +29,9 @@ public:
     static inline void coutListNode(ListNode* p)
     {
         for (; p != nullptr; p = p->next)
-            cout << p->val << " ";
+            std::cout << p->val << " ";
 
-        cout << "\b\n";
+        std::cout << "\b\n";
     }
 };
 
@@ -48,11 +46,11 @@ public:
 
     /// Create a binary tree whose nodes in level order
     /// \param nodes "null" means null node
-    static TreeNode* createTree(vector<string> nodes);
+    static TreeNode* createTree(std::vector<std::string> nodes);
 
     /// Create a binary tree by using a Complete Binary Tree array
     /// \param nodes "null" means null node
-    static TreeNode* createTreeCBT(const vector<string>& nodes);
+    static TreeNode* createTreeCBT(const std::vector<std::string>& nodes);
 };
 
 #endif //LEETCODE_LEETCODE_H
