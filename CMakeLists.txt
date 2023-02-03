@@ -8,3 +8,6 @@ link_directories(lib)
 
 add_subdirectory("source/6. Tree")
 add_subdirectory(include)
+
+#add_executable(test test.cpp)
+#target_link_libraries(test LeetCode)

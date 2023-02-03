@@ -7,49 +7,9 @@
 #include <queue>
 #include <stack>
 #include <algorithm>
+#include "LeetCode.h"
 
 using namespace std;
-
-struct TreeNode
-{
-    int val;
-    TreeNode* left;
-    TreeNode* right;
-    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-};
-
-TreeNode* createTree(vector<string> nodes)
-{
-    if (nodes.empty()) return nullptr;
-    if (nodes.size() % 2 == 0)
-        nodes.emplace_back("null");
-
-    TreeNode* root = new TreeNode(stoi(nodes[0]));
-    queue<TreeNode*> que;
-
-    que.push(root);
-
-    for (int i = 1; i < nodes.size(); i += 2)
-    {
-        TreeNode* cur = que.front();
-
-        if (nodes[i] != "null")
-        {
-            cur->left = new TreeNode(stoi(nodes[i]));
-            que.push(cur->left);
-        }
-
-        if (nodes[i + 1] != "null")
-        {
-            cur->right = new TreeNode(stoi(nodes[i + 1]));
-            que.push(cur->right);
-        }
-
-        que.pop();
-    }
-
-    return root;
-}
 
 void traversal(TreeNode* cur, vector<int>& res)
 {
@@ -89,7 +49,7 @@ int main()
 
     for (string& node: nodes) cin >> node;
 
-    TreeNode* root = createTree(nodes);
+    TreeNode* root = TreeNode::createTree(nodes);
 
     vector<int> res = postorderTraversal(root);
 
