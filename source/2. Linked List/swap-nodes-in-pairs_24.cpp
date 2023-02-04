@@ -15,9 +15,9 @@ int main()
     int n;
     cin >> n;
 
-    ListNode* head = cinListNode(n);
+    ListNode* head = ListNode::cinListNode(n);
 
-    coutListNode(swapPairs(head));
+    ListNode::coutListNode(swapPairs(head));
 
     return 0;
 }

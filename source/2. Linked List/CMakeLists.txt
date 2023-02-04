@@ -3,7 +3,6 @@ project(LeetCode)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(linked-list-cycle-ii linked-list-cycle-ii_142.cpp)
-add_library(libListNode ListNode.cpp)
+add_executable(LinkedList 25-reverse-nodes-in-k-group.cpp)
 
-target_link_libraries(linked-list-cycle-ii libListNode)
+target_link_libraries(LinkedList ListNode)

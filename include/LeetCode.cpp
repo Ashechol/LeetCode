@@ -107,3 +107,54 @@ TreeNode *TreeNode::createTreeCBT(const vector<string>& nodes)
 
     return root;
 }
+
+TreeNode* TreeNode::cinTree(int n)
+{
+    if (n == 0) return nullptr;
+    auto* root = new TreeNode(0);
+
+    cin >> root->val;
+
+    queue<TreeNode*> que;
+    que.push(root);
+
+    for (int i = 1; i < n; i += 2)
+    {
+        string l, r;
+        cin >> l >> r;
+
+        TreeNode* cur = que.front();
+        que.pop();
+
+        if (l != "null")
+        {
+            cur->left = new TreeNode(stoi(l));
+            que.push(cur->left);
+        }
+
+        if (r != "null")
+        {
+            cur->right = new TreeNode(stoi(r));
+            que.push(cur->right);
+        }
+    }
+
+    return root;
+}
+
+void TreeNode::coutTree(TreeNode *root)
+{
+    queue<TreeNode*> que;
+    if (root) que.push(root);
+
+    while (!que.empty())
+    {
+        TreeNode* cur = que.front();
+        que.pop();
+        cout << cur->val << " ";
+
+        if (cur->left) que.push(cur->left);
+        if (cur->right) que.push(cur->right);
+    }
+    cout << "\b\n";
+}

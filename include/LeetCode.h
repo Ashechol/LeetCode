@@ -15,6 +15,7 @@ public:
     ListNode* next;
 
     explicit ListNode(int x = 0) : val(x), next(nullptr) {}
+    explicit ListNode(ListNode* next) : next(next) {}
 
     /// cin a normal list
     /// \param n node num
@@ -51,6 +52,12 @@ public:
     /// Create a binary tree by using a Complete Binary Tree array
     /// \param nodes "null" means null node
     static TreeNode* createTreeCBT(const std::vector<std::string>& nodes);
+
+    /// cin in level order, "null" means null node
+    static TreeNode* cinTree(int n);
+
+    /// cout in level order
+    static void coutTree(TreeNode* root);
 };
 
 #endif //LEETCODE_LEETCODE_H
