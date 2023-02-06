@@ -53,7 +53,7 @@ TreeNode *TreeNode::createTree(vector<string> nodes)
     if (nodes.size() % 2 == 0)
         nodes.emplace_back("null");
 
-    auto root = new TreeNode(stoi(nodes[0]));
+    auto root = new TreeNode(nodes[0]);
     queue<TreeNode*> que;
     que.push(root);
 
@@ -63,13 +63,13 @@ TreeNode *TreeNode::createTree(vector<string> nodes)
 
         if (nodes[i] != "null")
         {
-            node->left = new TreeNode(stoi(nodes[i]));
+            node->left = new TreeNode(nodes[i]);
             que.push(node->left);
         }
 
         if (nodes[i + 1] != "null")
         {
-            node->right = new TreeNode(stoi(nodes[i + 1]));
+            node->right = new TreeNode(nodes[i + 1]);
             que.push(node->right);
         }
 

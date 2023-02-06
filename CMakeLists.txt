@@ -8,4 +8,5 @@ link_directories(lib)
 
 add_subdirectory("source/2. Linked List")
 add_subdirectory("source/6. Tree")
+add_executable(test test.cpp)
 add_subdirectory(include)

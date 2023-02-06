@@ -44,6 +44,7 @@ public:
     TreeNode* right;
 
     explicit TreeNode(int x = 0) : val(x), left(nullptr), right(nullptr) {}
+    explicit TreeNode(const std::string& x) : val(std::stoi(x)), left(nullptr), right(nullptr) {}
 
     /// Create a binary tree whose nodes in level order
     /// \param nodes "null" means null node
