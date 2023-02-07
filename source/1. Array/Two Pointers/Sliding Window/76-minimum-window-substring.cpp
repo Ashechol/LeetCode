@@ -1,7 +1,6 @@
 // Created by Ashechol on 2022/9/18.
 // 76. 最小覆盖子串
-// 题目链接：https://leetcode.cn/problems/minimum-window-substring/
-// 题解链接：https://www.wolai.com/ktot9KqKvRKWvcJT5s15D3#5NPdHCf4eAdMXcMu1JUo6v
+// https://leetcode.cn/problems/minimum-window-substring/
 
 #include <iostream>
 #include <unordered_map>
