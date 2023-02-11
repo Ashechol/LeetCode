@@ -10,5 +10,7 @@ int main()
 
     cout << t << endl;
 
+    string str;
+
     return 0;
 }
