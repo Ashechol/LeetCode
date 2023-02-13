@@ -1,6 +1,6 @@
-// Created by Ashechol on 2023/2/11.
-// 236. 二叉树的最近公共祖先
-// https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/
+// Created by Ashechol on 2023/2/12.
+// 235. 二叉搜索树的最近公共祖先
+// https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-search-tree/
 
 #include <iostream>
 #include <vector>
@@ -48,25 +48,40 @@ TreeNode* createTree(vector<string> nodes)
 
 TreeNode* lowestCommonAncestor(TreeNode* cur, int p, int q)
 {
-    if (!cur || cur->val == p || cur->val == q) return cur;
+    if (!cur) return cur;
 
-    TreeNode* left = lowestCommonAncestor(cur->left, p, q);
-    TreeNode* right = lowestCommonAncestor(cur->right, p, q);
+    if (p < cur->val && q < cur->val)
+        return lowestCommonAncestor(cur->left, p, q);
+    if (p > cur->val && q > cur->val)
+        return lowestCommonAncestor(cur->right, p, q);
 
-    if (left && right) return cur;
-    if (!left && right) return right;
-    return left;
+    return cur;
+}
+
+TreeNode* lowestCommonAncestor(TreeNode* cur, TreeNode* p, TreeNode* q)
+{
+    while (cur)
+    {
+        if (p->val < cur->val && q->val < cur->val)
+            cur = cur->left;
+        else if (p->val > cur->val && q->val > cur->val)
+            cur = cur->right;
+        else
+            break;
+    }
+
+    return cur;
 }
 
 int main()
 {
     int n, p, q;
     cin >> n >> p >> q;
+
     vector<string> nodes(n);
     for (string& node: nodes) cin >> node;
 
     TreeNode* root = createTree(nodes);
-
     cout << lowestCommonAncestor(root, p, q)->val << endl;
     return 0;
 }
