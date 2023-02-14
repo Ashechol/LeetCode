@@ -1,16 +1,33 @@
 #include <iostream>
+#include <queue>
 
 using namespace std;
 
+struct Compare
+{
+    bool operator () (int a, int b)
+    {
+        return a > b;
+    }
+};
+
 int main()
 {
-    cout << LONG_MIN << endl;
-    cout << INT_MIN << endl;
-    int64_t t = LONG_MIN;
+    int n, k;
+    cin >> n >> k;
+    vector<int> nums(n);
+    for (int& num: nums) cin >> num;
 
-    cout << t << endl;
+    priority_queue<int, vector<int>, Compare> heap;
 
-    string str;
+    for (int num: nums)
+    {
+        heap.push(num);
+        if (heap.size() > k)
+            heap.pop();
+    }
+
+    cout << heap.top() << endl;
 
     return 0;
 }
