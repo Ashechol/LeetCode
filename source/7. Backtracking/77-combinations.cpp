@@ -22,14 +22,14 @@ void dfs(int bg, int n, int k)
     for (int i = bg; i <= k; i++)
     {
         path.emplace_back(i);
-        backTracking(i + 1, k, n);
+        dfs(i + 1, k, n);
         path.pop_back();
     }
 }
 
 vector<vector<int>> combine(int n, int k)
 {
-    backTracking(1, n, k);
+    dfs(1, n, k);
     return ans;
 }
 
