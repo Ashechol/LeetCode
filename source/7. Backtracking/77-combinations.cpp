@@ -11,18 +11,18 @@ vector<vector<int>> ans;
 vector<int> path;
 void dfs(int bg, int n, int k)
 {
-    if (path.size() == n)
+    if (path.size() == k)
     {
         ans.emplace_back(path);
         return;
     }
 
-    if (k - bg + 1 < n - path.size()) return;
+    if (n - bg + 1 < k - path.size()) return;
 
-    for (int i = bg; i <= k; i++)
+    for (int i = bg; i <= n; i++)
     {
         path.emplace_back(i);
-        dfs(i + 1, k, n);
+        dfs(i + 1, n, k);
         path.pop_back();
     }
 }
