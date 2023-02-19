@@ -19,12 +19,12 @@ int check(string s, int bg, int ed)
 
     for (int i = bg, j = ed; i < j; i++, j--)
     {
-        if (s[i] != s[j])
+        if (s[i] != s[j] || record[i+1][j-1] == 2)
         {
             record[bg][ed] = 2;
             return 2;
         }
-        if (s[i] == s[j] && record[i+1][j-1] == 1)
+        if (record[i+1][j-1] == 1)
         {
             record[bg][ed] = 1;
             return 1;
