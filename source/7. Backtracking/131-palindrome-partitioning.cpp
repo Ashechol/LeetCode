@@ -64,9 +64,8 @@ int main()
     dfs(s, 0);
     for (const vector<string>& ans: res)
     {
-        for (const string& subStr: ans)
-            cout << subStr << " ";
-        cout << '\b' << endl;
+        for (int i = 0; i < ans.size(); i++)
+            cout << ans[i] << "\n "[i < ans.size()-1];
     }
 
     return 0;
