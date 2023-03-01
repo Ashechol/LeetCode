@@ -1,29 +1,49 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <queue>
+#include <unordered_set>
 
 using namespace std;
 
-int maxProfit(vector<int>& prices)
+vector<vector<int>> threeSum(vector<int>& nums)
 {
-    int maxProf = 0;
-    int minPrice = prices[0];
-
-    for (int i = 1; i < prices.size(); i++)
+    vector<vector<int>> res;
+    sort(nums.begin(), nums.end());
+    for (int i = 0; i < nums.size(); i++)
     {
-        minPrice = min(prices[i], minPrice);
-        maxProf = max(maxProf, prices[i] - minPrice);
+        if (i > 0 && nums[i] == nums[i-1]) continue;
+
+        int l = i + 1, r = nums.size() - 1;
+        while (l < r)
+        {
+            int sum = nums[l] + nums[r] + nums[i];
+            if (sum == 0)
+            {
+                res.push_back({nums[i], nums[l], nums[r]});
+                while (l < r && nums[l] == nums[l+1]) l++;
+                while (l < r && nums[r] == nums[r-1]) r--;
+                l++; r--;
+            }
+            else if (sum > 0)
+                r--;
+            else
+                l++;
+        }
     }
 
-    return maxProf;
+    return res;
 }
 
 int main()
 {
     int n;
     cin >> n;
-    vector<int> prices(n);
-    for (int& price: prices) cin >> price;
-    cout << maxProfit(prices) << endl;
+    vector<int> nums(n);
+    for (int& num: nums) cin >> num;
+    vector<vector<int>> res = threeSum(nums);
+    for (vector<int>& ans: res)
+        for (int i = 0; i < ans.size(); i++)
+            cout << ans[i] << "\n "[i != ans.size()-1];
     return 0;
 }
