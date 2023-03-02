@@ -4,9 +4,22 @@
 
 #include <iostream>
 #include <vector>
-#include <unordered_map>
 
 using namespace std;
+
+int robFromTo(vector<int>& nums, int bg, int ed)
+{
+    vector<int> dp(2);
+
+    dp[0] = 0; dp[1] = nums[bg];
+    for (int i = bg; i < ed; i++)
+    {
+        int tmp = max(dp[1], dp[0] + nums[i]);
+        dp[0] = dp[1]; dp[1] = tmp;
+    }
+
+    return dp[1];
+}
 
 int rob(vector<int>& nums)
 {
@@ -14,21 +27,21 @@ int rob(vector<int>& nums)
 
     vector<int> dp(2);
 
-    dp[0] = 0; dp[1] = nums[0];
-    for (int i = 1; i < nums.size() - 1; i++)
-    {
-        int tmp = max(dp[1], dp[0] + nums[i]);
-        dp[0] = dp[1]; dp[1] = tmp;
-    }
-    int res1 = dp[1];
+    // dp[0] = 0; dp[1] = nums[0];
+    // for (int i = 1; i < nums.size() - 1; i++)
+    // {
+    //     int tmp = max(dp[1], dp[0] + nums[i]);
+    //     dp[0] = dp[1]; dp[1] = tmp;
+    // }
+    int res1 = robFromTo(nums, 1, nums.size()-1);
 
-    dp[0] = 0; dp[1] = nums[1];
-    for (int i = 2; i < nums.size(); i++)
-    {
-        int tmp = max(dp[1], dp[0] + nums[i]);
-        dp[0] = dp[1]; dp[1] = tmp;
-    }
-    int res2 = dp[1];
+    // dp[0] = 0; dp[1] = nums[1];
+    // for (int i = 2; i < nums.size(); i++)
+    // {
+    //     int tmp = max(dp[1], dp[0] + nums[i]);
+    //     dp[0] = dp[1]; dp[1] = tmp;
+    // }
+    int res2 = robFromTo(nums, 2, nums.size());
 
     return max(res1, res2);
 }
