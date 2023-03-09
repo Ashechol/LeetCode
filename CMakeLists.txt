@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 include_directories(include)
 link_directories(lib)
 
+add_subdirectory("source/1. Array")
 add_subdirectory("source/2. Linked List")
 # add_subdirectory("source/6. Tree")
 # add_subdirectory("source/7. Backtracking")
