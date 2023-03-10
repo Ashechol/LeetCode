@@ -1,49 +1,97 @@
+#include <unordered_map>
 #include <iostream>
-#include <vector>
-#include <algorithm>
-#include <queue>
-#include <unordered_set>
 
 using namespace std;
 
-vector<vector<int>> threeSum(vector<int>& nums)
-{
-    vector<vector<int>> res;
-    sort(nums.begin(), nums.end());
-    for (int i = 0; i < nums.size(); i++)
-    {
-        if (i > 0 && nums[i] == nums[i-1]) continue;
+class LRUCache {
 
-        int l = i + 1, r = nums.size() - 1;
-        while (l < r)
+    struct DualListNode
+    {
+        int key;
+        int val;
+        DualListNode* pre;
+        DualListNode* next;
+        DualListNode(int key=0, int val=0) : key(key), val(val), pre(nullptr), next(nullptr) {}
+    };
+
+    unordered_map<int, DualListNode*> lruHash;
+    DualListNode* dummyHead;
+    DualListNode* dummyTail;
+
+    void Update(DualListNode* tmp)
+    {
+        tmp->pre->next = tmp->next;
+        tmp->next->pre = tmp->pre;
+        tmp->pre = dummyHead;
+        tmp->next = dummyHead->next;
+        dummyHead->next->pre = tmp;
+        dummyHead->next = tmp;
+    }
+
+public:
+    int capacity;
+
+    LRUCache(int capacity) : capacity(capacity),
+                             dummyHead(new DualListNode()), dummyTail(new DualListNode())
+    {
+        dummyHead->next = dummyTail;
+        dummyTail->pre = dummyHead;
+    }
+
+
+    int get(int key)
+    {
+        if (lruHash.find(key) == lruHash.end())
+            return -1;
+        else
         {
-            int sum = nums[l] + nums[r] + nums[i];
-            if (sum == 0)
-            {
-                res.push_back({nums[i], nums[l], nums[r]});
-                while (l < r && nums[l] == nums[l+1]) l++;
-                while (l < r && nums[r] == nums[r-1]) r--;
-                l++; r--;
-            }
-            else if (sum > 0)
-                r--;
-            else
-                l++;
+            Update(lruHash[key]);
+            return lruHash[key]->val;
         }
     }
 
-    return res;
-}
+    void put(int key, int value)
+    {
+        if (lruHash.find(key) != lruHash.end())
+        {
+            lruHash[key]->val = value;
+            Update(lruHash[key]);
+            return;
+        }
+
+        DualListNode* newNode = new DualListNode(key, value);
+
+        if (lruHash.size() == capacity)
+        {
+            DualListNode* tmp = dummyTail->pre;
+            dummyTail->pre = tmp->pre;
+            tmp->pre->next = dummyTail;
+
+            cout << tmp->key << endl;
+            lruHash.erase(tmp->key);
+            delete tmp;
+        }
+
+        lruHash[key] = newNode;
+        dummyHead->next->pre = newNode;
+        newNode->next = dummyHead->next;
+        newNode->pre = dummyHead;
+        dummyHead->next = newNode;
+    }
+};
 
 int main()
 {
-    int n;
-    cin >> n;
-    vector<int> nums(n);
-    for (int& num: nums) cin >> num;
-    vector<vector<int>> res = threeSum(nums);
-    for (vector<int>& ans: res)
-        for (int i = 0; i < ans.size(); i++)
-            cout << ans[i] << "\n "[i != ans.size()-1];
+    LRUCache lr(2);
+    lr.put(1, 1); // 缓存是 {1=1}
+    lr.put(2, 2); // 缓存是 {1=1, 2=2}
+    lr.get(1);    // 返回 1
+    lr.put(3, 3); // 该操作会使得关键字 2 作废，缓存是 {1=1, 3=3}
+    lr.get(2);    // 返回 -1 (未找到)
+    lr.put(4, 4); // 该操作会使得关键字 1 作废，缓存是 {4=4, 3=3}
+    lr.get(1);    // 返回 -1 (未找到)
+    lr.get(3);    // 返回 3
+    lr.get(4);    // 返回 4
+
     return 0;
 }

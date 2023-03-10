@@ -39,7 +39,6 @@ int search(vector<int>& nums, int target)
 int main()
 {
     vector<int> nums;
-
     int tmp;
     while (cin >> tmp)
     {
