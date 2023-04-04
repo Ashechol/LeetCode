@@ -3,7 +3,6 @@
 // https://leetcode.cn/problems/add-strings/
 
 #include <iostream>
-#include <vector>
 #include <algorithm>
 
 using namespace std;
